@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-//Timebound
+//Timebound Structure of timebounds array
 type Timebound struct {
 	From string
 	To   string
@@ -15,7 +15,7 @@ type Timebound struct {
 
 //CheckForTimeBound Will return true if the timestamp is within Timebound
 func CheckForTimeBound(cronRegEx string, timestamp string, timebounds []Timebound) bool {
-	t := time.Now()
+	t := time.Parse(time.RFC3339, timestamp)
 	minute := t.Local().Minute()
 	hour := t.Local().Hour()
 	date := t.Local().Day()
